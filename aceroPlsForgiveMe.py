@@ -24,9 +24,23 @@ if(math.pow(p, 2) - 4 * q) > 0:
     tempMatrix1 = sympy.Matrix([[a - lambda1, b], [c, d-lambda1]])
     tempMatrix2 = sympy.Matrix([[a - lambda2, b], [c, d-lambda2]])
     
+t = np.array(range(-5, 5))
+null1 = tempMatrix1.nullspace()
+null2 = tempMatrix2.nullspace()
+
+n1 = t*null1[0][0]/null1[0][1]
+n2 = t*null2[0][0]/null2[0][1]
+
+null2 = tempMatrix2.nullspace
+
 
 x = np.array(range(-5, 5))
 nulclina_x = (-a * x) / b
 nulclina_y = (-c * x) / d
 
 
+plt.plot(t, n1)
+plt.plot(t, n2)
+plt.plot(x, nulclina_x)
+plt.plot(x, nulclina_y)
+plt.show()
