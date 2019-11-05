@@ -9,16 +9,13 @@ def caluloX(x, y):
     derivadax = (a*x + b*y)**2
     derivaday = (c*x + d*y)**2
     normalizado = math.sqrt(derivadax + derivaday)
-    # print("normalizado", normalizado)
-    # print("retornando: ", (a/normalizado)*x + (b/normalizado) * y)
-    return ((a/normalizado)*x + (b/normalizado) * y)/15
+    return ((a/normalizado)*x + (b/normalizado) * y)/10
 
 def caluloY(x, y):
     derivadax = (a*x + b*y)**2
     derivaday = (c*x + d*y)**2
     normalizado = math.sqrt(derivadax + derivaday)
-    return ((c/normalizado) * x + (d /normalizado) * y)/15
-# poner puntos mas peques
+    return ((c/normalizado) * x + (d /normalizado) * y)/10
 
 def valoresFuturos(valueX, valueY, counter):
     if counter > 100: return
@@ -73,11 +70,11 @@ if (math.pow(p, 2) - 4 * q) > 0:
 
 fig = plt.figure()
 ax = fig.add_subplot(111)
-ax.set_title('click to build line segments')
+ax.set_title('Clickea para ver los valores futuros')
 line, = ax.plot([0], [0])  # empty line
 linebuilder = LineBuilder(line)
 
-t = np.array(range(-5, 5))
+t = np.array(range(-10, 10))
 null1 = tempMatrix1.nullspace()
 null2 = tempMatrix2.nullspace()
 
@@ -89,16 +86,9 @@ n2 = np.array(n2, dtype=np.complex_)
 
 null2 = tempMatrix2.nullspace
 
-x = np.array(range(-5, 5))
+x = np.array(range(-10, 10))
 nulclina_x = (-a * x) / b
 nulclina_y = (-c * x) / d
-
-
-
-
-print(n1)
-print(n2)
-# if isinstance(x, complex):
 
 if (not np.iscomplex(n1).any()):
     plt.plot(t, n1)
