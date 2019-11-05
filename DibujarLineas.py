@@ -9,23 +9,23 @@ def caluloX(x, y):
     derivadax = (a*x + b*y)**2
     derivaday = (c*x + d*y)**2
     normalizado = math.sqrt(derivadax + derivaday)
-    return ((a/normalizado)*x + (b/normalizado) * y)/10
+    return ((a/normalizado)*x + (b/normalizado) * y)/5
 
 def caluloY(x, y):
     derivadax = (a*x + b*y)**2
     derivaday = (c*x + d*y)**2
     normalizado = math.sqrt(derivadax + derivaday)
-    return ((c/normalizado) * x + (d /normalizado) * y)/10
+    return ((c/normalizado) * x + (d /normalizado) * y)/5
 
 def valoresFuturos(valueX, valueY, counter):
-    if counter > 100: return
-    plt.scatter(valueX, valueY, c='#1B58D6', s= 10)
+    if counter > cantidadPuntps: return
+    plt.scatter(valueX, valueY, c='#1B58D6', s= 3)
     plt.draw()
     valoresFuturos(valueX + caluloX(valueX,valueY),valueY + caluloY(valueX,valueY), counter +1)
 
 def valoresPasados(valueX, valueY, counter):
-    if counter > 100: return
-    plt.scatter(valueX, valueY, c='#3DA416', s= 10)
+    if counter > cantidadPuntps: return
+    plt.scatter(valueX, valueY, c='#3DA416', s= 3)
     plt.draw()
     valoresPasados(valueX - caluloX(valueX,valueY),valueY - caluloY(valueX,valueY), counter +1)
 
@@ -49,6 +49,7 @@ a = float(input("ingrese valor a:"))
 b = float(input("ingrese valor b:"))
 c = float(input("ingrese valor c:"))
 d = float(input("ingrese valor d:"))
+cantidadPuntps = float(input("ingrese la cantidad de puntos a graficar:"))
 
 p = -(a + d)
 q = (a * d) - (b * c)
@@ -56,7 +57,9 @@ q = (a * d) - (b * c)
 tempMatrix1 = sympy.Matrix([[0, 0], [0, 0]])
 tempMatrix2 = sympy.Matrix([[0, 0], [0, 0]])
 
-print(p, q)
+print("El valor de P es: ", p)
+print("El valor de Q es: ", q)
+
 if (math.pow(p, 2) - 4 * q) > 0:
     lambda1 = (-p - (math.sqrt(math.pow(p, 2) - 4 * q))) / 2
     lambda2 = (-p + (math.sqrt(math.pow(p, 2) - 4 * q))) / 2
@@ -67,14 +70,14 @@ if (math.pow(p, 2) - 4 * q) > 0:
 
 
 
-
 fig = plt.figure()
 ax = fig.add_subplot(111)
+plt.axis([-25, 25, -25, 25])
 ax.set_title('Clickea para ver los valores futuros')
 line, = ax.plot([0], [0])  # empty line
 linebuilder = LineBuilder(line)
 
-t = np.array(range(-10, 10))
+t = np.array(range(-25, 25))
 null1 = tempMatrix1.nullspace()
 null2 = tempMatrix2.nullspace()
 
@@ -86,7 +89,7 @@ n2 = np.array(n2, dtype=np.complex_)
 
 null2 = tempMatrix2.nullspace
 
-x = np.array(range(-10, 10))
+x = np.array(range(-25, 25))
 nulclina_x = (-a * x) / b
 nulclina_y = (-c * x) / d
 
