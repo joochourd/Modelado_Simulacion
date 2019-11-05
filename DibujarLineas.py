@@ -9,13 +9,13 @@ def caluloX(x, y):
     derivadax = (a*x + b*y)**2
     derivaday = (c*x + d*y)**2
     normalizado = math.sqrt(derivadax + derivaday)
-    return ((a/normalizado)*x + (b/normalizado) * y)/5
+    return ((a/normalizado)*x + (b/normalizado) * y)/2
 
 def caluloY(x, y):
     derivadax = (a*x + b*y)**2
     derivaday = (c*x + d*y)**2
     normalizado = math.sqrt(derivadax + derivaday)
-    return ((c/normalizado) * x + (d /normalizado) * y)/5
+    return ((c/normalizado) * x + (d /normalizado) * y)/2
 
 def valoresFuturos(valueX, valueY, counter):
     if counter > cantidadPuntps: return
@@ -81,8 +81,14 @@ t = np.array(range(-25, 25))
 null1 = tempMatrix1.nullspace()
 null2 = tempMatrix2.nullspace()
 
-n1 = t * null1[0][0] / null1[0][1]
-n2 = t * null2[0][0] / null2[0][1]
+print(null1)
+print(null2)
+try:
+    n1 = t * null1[0][0] / null1[0][1]
+    n2 = t * null2[0][0] / null2[0][1]
+except IndexError:
+    n1 = np.array(range(-25, 25))
+    n2 = np.array(range(-25, 25))
 
 n1 = np.array(n1, dtype=np.complex_)
 n2 = np.array(n2, dtype=np.complex_)
