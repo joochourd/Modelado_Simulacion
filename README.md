@@ -1,12 +1,3 @@
-# Modelado_Simulacion
-Un tp sobre los temas vistos en la materia de modelado y simulacion
-
-Tema: Graficacion de sistemas acomplados, lineales
-
-El trabajo fue realizado en python, usando las librerias numpy para operaciones algebraicas sobre matrices y matplot para graficar los diferentes componentes necesarios.
-
-
-
 # Modelado y simulación
 
 ## Un tp sobre los temas vistos en la materia de modelado y simulacion
