@@ -10,27 +10,27 @@ A continuacion explicaremos las diferentes partes del codigo:
 
 Aqui pedimos los diferentes inputs que necesitamos para construir la matriz y la cantidad de puntos que se desea graficar:
 
-a = float(input("ingrese valor a:"))
-b = float(input("ingrese valor b:"))
-c = float(input("ingrese valor c:"))
-d = float(input("ingrese valor d:"))
-cantidadPuntps = float(input("ingrese la cantidad de puntos a graficar:"))
+    a = float(input("ingrese valor a:"))
+    b = float(input("ingrese valor b:"))
+    c = float(input("ingrese valor c:"))
+    d = float(input("ingrese valor d:"))
+    cantidadPuntps = float(input("ingrese la cantidad de puntos a graficar:"))
 
 #### Conseguimos los valores de P y Q
 
-p = -(a + d)
-q = (a * d) - (b * c)
+    p = -(a + d)
+    q = (a * d) - (b * c)
 
 
 #### Observamos si encontramos raices reales y si es asi las calculamos 
 
-if (math.pow(p, 2) - 4 * q) > 0:
-    lambda1 = (-p - (math.sqrt(math.pow(p, 2) - 4 * q))) / 2
-    lambda2 = (-p + (math.sqrt(math.pow(p, 2) - 4 * q))) / 2
-    print("lambdas: ", lambda1, lambda2)
+    if (math.pow(p, 2) - 4 * q) > 0:
+        lambda1 = (-p - (math.sqrt(math.pow(p, 2) - 4 * q))) / 2
+        lambda2 = (-p + (math.sqrt(math.pow(p, 2) - 4 * q))) / 2
+        print("lambdas: ", lambda1, lambda2)
 
-    tempMatrix1 = sympy.Matrix([[a - lambda1, b], [c, d - lambda1]])
-    tempMatrix2 = sympy.Matrix([[a - lambda2, b], [c, d - lambda2]])
+        tempMatrix1 = sympy.Matrix([[a - lambda1, b], [c, d - lambda1]])
+        tempMatrix2 = sympy.Matrix([[a - lambda2, b], [c, d - lambda2]])
 
 #### Calculamos los null spaces usando funciones propias de la libreria numpy
     null1 = tempMatrix1.nullspace()
