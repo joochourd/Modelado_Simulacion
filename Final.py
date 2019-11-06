@@ -116,15 +116,13 @@ print(graficar)
 if (not np.iscomplex(n1).any() and graficar):
     try:
         plt.plot(t, n1)
-        print("")
     except Exception:
-        print("")
+        print("No se pueden graficar")
 if (not np.iscomplex(n2).any() and graficar):
     try:
         plt.plot(t, n2)
-        print("")
     except Exception:
-        print("")
+        print("No se pueden graficar")
 
 plt.plot(x, nulclina_x, '--', label='Nuclina X')
 if (not graficarInvertido):
